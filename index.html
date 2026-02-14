@@ -3,38 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You</title>
+<title>Three Years With You</title>
 
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* Basic Reset */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: 'Inter', sans-serif; background:#fdf7f2; color:#333; overflow-x:hidden;}
+
+/* Intro Screen */
+.intro-screen {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  display:flex; justify-content:center; align-items:center;
+  background:#fdf7f2; z-index:1000; cursor:pointer;
+  transition: opacity 1s ease;
+}
+.intro-screen.hidden {opacity:0; pointer-events:none;}
+.intro-text {font-family:'Playfair Display', serif; font-size:1.8rem; color:#b76e79; animation: pulse 2s infinite;}
+@keyframes pulse {0%,100%{opacity:1}50%{opacity:0.6}}
+
+/* Hero Section */
+.hero {text-align:center; padding:100px 20px; opacity:0; transform:translateY(30px); transition: all 1s ease;}
+.hero.visible {opacity:1; transform:translateY(0);}
+.hero h1 {font-family:'Playfair Display', serif; font-size:2.5rem; color:#b76e79; margin-bottom:20px;}
+.hero p {font-size:1.1rem; line-height:1.6; max-width:600px; margin:0 auto; color:#555;}
+
+/* Gallery Section */
+.gallery {display:flex; flex-direction:column; gap:40px; padding:50px 20px; opacity:0; transform:translateY(30px); transition: all 1s ease;}
+.gallery.visible {opacity:1; transform:translateY(0);}
+.image-block {text-align:center;}
+.image-block img, .image-block video {max-width:100%; border-radius:10px; box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+.caption {margin-top:15px; font-style:italic; color:#666;}
+
+/* Video Styling */
+.year-video {border-radius:10px; max-width:100%; height:auto;}
+
+/* Closing Section */
+.closing {text-align:center; padding:100px 20px; opacity:0; transform:translateY(30px); transition: all 1s ease;}
+.closing.visible {opacity:1; transform:translateY(0);}
+.closing h2 {font-family:'Playfair Display', serif; font-size:2rem; color:#b76e79;}
+
+/* Animations on scroll */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {opacity:0; transform:translateY(30px); transition: all 1s ease;}
+  .fade-in.visible {opacity:1; transform:translateY(0);}
+}
+</style>
 
 </head>
 <body>
 
 <!-- Intro Screen -->
-<div class="intro-screen">
-    <div class="intro-text">
-        <p>Tap anywhere</p>
-    </div>
+<div class="intro-screen" id="intro">
+    <div class="intro-text">Tap anywhere to open</div>
 </div>
 
 <!-- Hero Section -->
-<section class="hero hidden">
-    <div class="hero-content">
-        <h1>Three Years.</h1>
-        <p class="opening">
-            Three years ago, I chose you.<br><br>
-            I didn’t know then that you would become my calm in chaos,
-            my comfort in silence,
-            my safest place in this world.<br><br>
-            I don’t just love you.<br>
-            <strong>I love that you love me.</strong>
-        </p>
-    </div>
+<section class="hero fade-in" id="hero">
+    <h1>Three Years Together</h1>
+    <p>
+        Three years ago, I chose you.<br><br>
+        I didn’t know then that you would become my calm in chaos,<br>
+        my comfort in silence,<br>
+        my safest place in this world.<br><br>
+        I don’t just love you.<br>
+        <strong>I love that you love me.</strong>
+    </p>
 </section>
 
 <!-- Gallery Section -->
-<section class="gallery hidden">
+<section class="gallery fade-in" id="gallery">
 
     <!-- Year 1 Photo -->
     <div class="image-block">
@@ -50,7 +90,7 @@
 
     <!-- Year 3 Video -->
     <div class="image-block">
-        <video autoplay muted loop class="year-video" playsinline>
+        <video autoplay muted loop playsinline class="year-video">
             <source src="images%20video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -60,13 +100,33 @@
 </section>
 
 <!-- Closing Section -->
-<section class="closing hidden">
+<section class="closing fade-in" id="closing">
     <h2>
         No matter what life brings,<br>
         I am grateful it brought me you.
     </h2>
 </section>
 
-<script src="script.js"></script>
+<script>
+/* Intro Tap */
+const intro = document.getElementById('intro');
+const hero = document.getElementById('hero');
+const gallery = document.getElementById('gallery');
+const closing = document.getElementById('closing');
+
+intro.addEventListener('click', () => {
+    intro.classList.add('hidden');
+    setTimeout(() => {
+        hero.classList.add('visible');
+    }, 500);
+    setTimeout(() => {
+        gallery.classList.add('visible');
+    }, 1500);
+    setTimeout(() => {
+        closing.classList.add('visible');
+    }, 2500);
+});
+</script>
+
 </body>
 </html>
