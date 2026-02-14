@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f1ea;
+    color: #2e2e2e;
+    overflow-x: hidden;
+}
+
+/* Intro Screen */
+.intro-screen {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #f4f1ea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 1.5s ease;
+}
+
+.intro-text p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    opacity: 0.6;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    margin-bottom: 30px;
+}
+
+.opening {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.9;
+}
+
+/* Gallery */
+.gallery {
+    padding: 100px 20px;
+    max-width: 900px;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.image-block {
+    margin-bottom: 120px;
+    text-align: center;
+}
+
+.image-block img,
+.year-video {
+    width: 100%;
+    max-width: 750px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    transition: transform 0.6s ease;
+}
+
+.image-block img:hover,
+.year-video:hover {
+    transform: scale(1.03);
+}
+
+.caption {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* Closing */
+.closing {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.closing h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    max-width: 700px;
+}
+
+/* Reveal */
+.visible {
+    opacity: 1 !important;
+}
